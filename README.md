@@ -164,7 +164,7 @@ This is great because once you have a `.d.ts` file, TypeScript can type check th
 The TypeScript community actively shares all of the most up-to-date `.d.ts` files for popular libraries on a GitHub repository called [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types).
 Making sure that your `.d.ts` files are setup correctly is super important because once they're in place, you get an incredible amount high quality of type checking (and thus bug catching, IntelliSense, and other editor tools) for free.
 
-> **Note!** Because we're using `"noImplicitAny": true`, we are required to have a `.d.ts` file for **every** library we use. While you could set `noImplicitAny` to `false` to silence errors about missing `.d.ts` files, it is a best practice to have a `.d.ts` file for every library. (Even the `.d.ts` file is [basically empty!](#writing-a-dts-file)) 
+> **Note!** Because we're using `"noImplicitAny": true`, we are required to have a `.d.ts` file for **every** library we use. While you could set `noImplicitAny` to `false` to silence errors about missing `.d.ts` files, it is a best practice to have a `.d.ts` file for every library. (Even if the `.d.ts` file is [basically empty!](#writing-a-dts-file)) 
 
 ### Installing `.d.ts` files from DefinitelyTyped
 For the most part, you'll find `.d.ts` files for the libraries you are using on DefinitelyTyped.
@@ -197,9 +197,9 @@ In the `tsconfig.json` for this project you'll see the following:
 This tells the TypeScript compiler that in addition to looking in `node_modules/@types` for every import (`*`) also look in our own `.d.ts` file location `<baseUrl>` + `src/types/*`.
 So when we write something like: 
 ```ts
-import * as lusca from "lusca";
+import * as flash from "express-flash";
 ```
-First the compiler will look for a `d.ts` file in `node_modules/@types` and then when it doesn't find one look in `src/types` and find our file `lusca.d.ts`.
+First the compiler will look for a `d.ts` file in `node_modules/@types` and then when it doesn't find one look in `src/types` and find our file `express-flash.d.ts`.
 
 #### Using `dts-gen`
 Unless you are familiar with `.d.ts` files, I strongly recommend trying to use the tool [dts-gen](https://github.com/Microsoft/dts-gen) first.
@@ -353,6 +353,16 @@ npm run tslint  // runs only TSLint
 Notice that TSLint is not a part of the main watch task.
 It can be annoying for TSLint to clutter the output window while in the middle of writing a function, so I elected to only run it only during the full build.
 If you are interesting in seeing TSLint feedback as soon as possible, I strongly recommend the [TSLint extension in VS Code]().
+
+### VSCode Extensions
+
+To enhance your development experience while working in VSCode we also provide you a list of the suggested extensions for working with this project:
+
+![Suggested Extensions In VSCode](https://user-images.githubusercontent.com/14539/34583539-6f290a30-f198-11e7-8804-30f40d418e20.png)
+
+- [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Azure Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 
 # Dependencies
 Dependencies are managed through `package.json`.
